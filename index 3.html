@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Masha 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #fdf7f0;
+  --card: #fffcf8;
+  --rose: #c8404e;
+  --rose-light: #f2c4cb;
+  --rose-pale: #fceef0;
+  --amber: #d4842a;
+  --text: #2c1a1a;
+  --muted: #9a7a7a;
+  --border: #f0dede;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 4rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.bg-stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--rose-light);
+  animation: twinkle ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.55; transform: scale(1.4); }
+}
+
+.petal {
+  position: fixed;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 0;
+  animation: petalFall linear infinite;
+  opacity: 0;
+}
+@keyframes petalFall {
+  0%   { transform: translateY(-40px) rotate(0deg) translateX(0); opacity: 0; }
+  5%   { opacity: 0.5; }
+  95%  { opacity: 0.5; }
+  100% { transform: translateY(110vh) rotate(540deg) translateX(40px); opacity: 0; }
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.top-badge {
+  background: var(--rose-pale);
+  border: 1px solid var(--rose-light);
+  border-radius: 100px;
+  padding: 0.35rem 1.1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 1.6rem;
+  animation: fadeSlideDown 0.7s ease both;
+}
+
+.title-area {
+  text-align: center;
+  margin-bottom: 2.2rem;
+  animation: fadeSlideDown 0.7s 0.1s ease both;
+}
+
+.big-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 9vw, 4.4rem);
+  font-weight: 600;
+  color: var(--rose);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.big-title .name {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.title-sub {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.deco-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2.2rem;
+  animation: fadeIn 0.7s 0.25s ease both;
+}
+.deco-line::before,
+.deco-line::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rose-light), transparent);
+}
+.deco-diamond {
+  width: 7px;
+  height: 7px;
+  background: var(--rose-light);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.8rem 2.6rem 2.4rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  animation: fadeSlideUp 0.8s 0.3s ease both;
+  box-shadow:
+    0 1px 3px rgba(180,80,80,0.06),
+    0 8px 32px rgba(180,80,80,0.07),
+    0 32px 64px rgba(180,80,80,0.04);
+}
+
+.card::before {
+  content: '✦';
+  position: absolute;
+  top: 1rem; left: 1.2rem;
+  font-size: 0.65rem;
+  color: var(--rose-light);
+}
+.card::after {
+  content: '✦';
+  position: absolute;
+  bottom: 1rem; right: 1.2rem;
+  font-size: 0.65rem;
+  color: var(--rose-light);
+}
+
+.card-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose-light), var(--rose), var(--amber), var(--rose), var(--rose-light));
+  background-size: 300%;
+  animation: flowBar 6s linear infinite;
+}
+@keyframes flowBar {
+  from { background-position: 0%; }
+  to   { background-position: 300%; }
+}
+
+.letter {
+  font-size: 1rem;
+  line-height: 1.95;
+  color: #3e2222;
+}
+
+.letter p {
+  margin-bottom: 1.15rem;
+}
+.letter p:last-child { margin-bottom: 0; }
+
+.letter em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--rose);
+  font-weight: 400;
+}
+
+.signoff {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  text-align: right;
+}
+
+.signoff-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.emoji-row {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.4rem;
+  justify-content: center;
+  animation: fadeIn 1s 0.8s ease both;
+}
+.emoji-row span {
+  font-size: 1.4rem;
+  animation: gentleBob ease-in-out infinite;
+}
+.emoji-row span:nth-child(1) { animation-duration: 2.2s; animation-delay: 0s; }
+.emoji-row span:nth-child(2) { animation-duration: 2.5s; animation-delay: 0.3s; }
+.emoji-row span:nth-child(3) { animation-duration: 2.1s; animation-delay: 0.6s; }
+.emoji-row span:nth-child(4) { animation-duration: 2.8s; animation-delay: 0.1s; }
+.emoji-row span:nth-child(5) { animation-duration: 2.3s; animation-delay: 0.5s; }
+
+@keyframes gentleBob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .card { padding: 2.2rem 1.6rem 2rem; }
+  .big-title { font-size: 2.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-stars" id="bg-stars"></div>
+<div id="petals"></div>
+
+<div class="wrapper">
+
+  <div class="top-badge">April 30 · For Masha</div>
+
+  <div class="title-area">
+    <div class="big-title">Happy Birthday,<br><span class="name">Masha</span> 🥳</div>
+    <div class="title-sub">a little something from me</div>
+  </div>
+
+  <div class="deco-line">
+    <div class="deco-diamond"></div>
+    <div class="deco-diamond"></div>
+    <div class="deco-diamond"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-accent"></div>
+
+    <div class="letter">
+      <p>Haha yeah remembered today even though I've been under a lot of exam pressure lately haha jk. But still, I feel a little bad that I didn't do something better for you. I had plans, but right now I'm a little broke ass rn so this message is all I can little send 🤏🥲</p>
+
+      <p>You know <em>you're really special to me.</em> With you, it never feels like conversations will end — it's like we always want to know more about each other. It's not even about being different, it's just that we understand each other deeply, and we genuinely want to stay, not leave.</p>
+
+      <p>What's rare is how you try to understand me, especially on my hard days. Through texts, through calls — you stay. I don't think many people would stay like that for 10 months with just texts and a few calls. But we did haha</p>
+
+      <p>I still remember that day when I called you after I had a little drink. I was talking nonsense, but you stayed on call with me for an hour, just listening. You didn't cut the call until I said I should go home. And you simply said <em>go safe</em> — that moment stayed with me.</p>
+
+      <p>The next morning I felt both sad and happy — sad because I didn't talk properly, but <em>happy because I realized you're the one I truly want in my life.</em></p>
+
+      <p>And our plans — we'll keep them, and do it all when we're together.</p>
+
+      <p>Happy birthday again, Masha. I'm really lucky to have you ❤️</p>
+    </div>
+
+    <div class="signoff">
+      <div class="signoff-name">— Jatin</div>
+    </div>
+  </div>
+
+  <div class="emoji-row">
+    <span>🎂</span>
+    <span>🌸</span>
+    <span>✨</span>
+    <span>🎈</span>
+    <span>💕</span>
+  </div>
+
+</div>
+
+<script>
+  const starsEl = document.getElementById('bg-stars');
+  for (let i = 0; i < 28; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = 2 + Math.random() * 3;
+    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${2.5+Math.random()*3.5}s;animation-delay:${Math.random()*4}s;`;
+    starsEl.appendChild(s);
+  }
+
+  const petalsEl = document.getElementById('petals');
+  const syms = ['🌸','✨','🌷','💕','🎀','⭐'];
+  for (let i = 0; i < 16; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = syms[Math.floor(Math.random() * syms.length)];
+    p.style.cssText = `left:${Math.random()*100}vw;top:${-10-Math.random()*20}px;font-size:${0.8+Math.random()*0.8}rem;animation-duration:${12+Math.random()*14}s;animation-delay:${Math.random()*14}s;`;
+    petalsEl.appendChild(p);
+  }
+</script>
+</body>
+</html>
